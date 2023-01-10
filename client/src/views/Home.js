@@ -14,7 +14,6 @@ const Home = () => {
     const [projects,setprojects] = useState([]);
     const [users,setusers] = useState([]);
     const [loading,setLoading] = useState(true);
-    const [totalcategory,settotalcategory] = useState('');
     const [filtered,setfiltered] = useState('');
     const [categoryList,setcategoryList] = useState([]);
 
@@ -22,9 +21,9 @@ const Home = () => {
         const getcategory = async ()=>{
             try{
                 const res = await axios.get('http://localhost:5000/api/category');
-                settotalcategory(res.data.total);
                 setLoading(false);
                 setcategory(res.data.category);
+                setcategoryList(res.data.categories);
             }
             catch(err){
                 console.log(err);
@@ -71,19 +70,7 @@ const Home = () => {
             setfiltered(newFilter);
         }
     };
-
-    console.log(totalcategory,category);
-
-    useEffect(()=>{
-        const filterCategories = () =>{        
-            for (const element of category) {
-                setcategoryList(element.categoryname)
-            }
-        }
-        filterCategories()
-    },[category])
-    console.log(categoryList);
-
+    
     if(loading) return <h1>Loading</h1>;
     return (
         <>
@@ -122,6 +109,7 @@ const Home = () => {
                                                         </div>
                                                         <div className="right">
                                                             <p className="paragraph">{item.city}</p>
+                                                            <p className="paragraph">{item.following}</p>
                                                         </div>
                                                     </div>
                                                 </Link>
@@ -164,10 +152,16 @@ const Home = () => {
                 <section className="section categories">
                     <div className="wrapper">
                         <div className="boxes">
-                            {category.map((item,i)=>{
+                            {category.slice(0,8).map((item,i)=>{
                                 return (
-                                    
-                                    <Card image={`../assets/${item.image[0].originalname}`} heading={item.categoryname} paragraph={categoryList._id === item.categoryname ? (categoryList.count + " Workmen " ) : ("0 Workmen")} key={i}/>
+                                    categoryList.map((cat,i)=>{
+                                        return cat._id === item.categoryname ? (
+                                            <Card image={`../assets/${item.image[0].originalname}`} heading={item.categoryname}  paragraph={cat.count + " Workmen" } key={i}/>
+                                        ) : (
+                                            ""
+                                        )
+                                        
+                                    })
                                     
                                 )
                             })}

@@ -69,7 +69,7 @@ const DashHeader = () => {
             <nav className="dash-mobile">
                 <div className="left">
                     <img src="../assets/icons8-menu-50.png" alt="menu" className="menu"/>
-                    <img src="../assets/logo.jpeg" alt="logo" className="logo"/>
+                    <Link to='/'><img src="../assets/logo.jpeg" alt="logo" className="logo"/></Link>
                 </div>
 
                 <div className="box">

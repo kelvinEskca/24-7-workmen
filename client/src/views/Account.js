@@ -179,9 +179,9 @@ const Account = () => {
                                         <Link to="/profile"><button>Edit Profile</button></Link>
                                     </div>
 
-                                    <div className="details-wrapper">
-                                        <h3 className="heading">Personal Data</h3>
+                                    <div className="details-wrapper new-details-wrapper">
                                         <div className="box empty">
+                                            <h3 className="heading">Personal Data</h3>
                                             <div className="empty-row">
                                                 <h3 className="heading">Firstname:</h3>
                                                 <p className="paragraph">{user.firstname}</p>

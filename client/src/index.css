@@ -597,7 +597,6 @@ header .mobile-top{
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
-  height: 100%;
 }
 
 header .mobile-top .menu{
@@ -606,6 +605,7 @@ header .mobile-top .menu{
 
 header .mobile-bottom{
   padding: 1rem;
+  overflow: auto;
 }
 
 header .header-list,header .list{
@@ -831,7 +831,7 @@ header .desktop .social li a img{
 }
 
 .event{
-  background-color: #f4f4fc;
+  background-color: #f3f4f9;
 }
 
 section .wrapper > .heading{
@@ -966,7 +966,7 @@ section .wrapper > .paragraph{
 }
 
 .most{
-  background-color: #f4f4fc;
+  background-color: #f3f4f9;
 }
 
 .most .boxes{
@@ -1167,6 +1167,12 @@ label a{
   align-items: flex-start;
   justify-content: center;
   border-radius: .3rem;
+}
+
+.dash-account .user-wrapper > .heading{
+  padding: 1rem;
+  font-size: 1rem;
+  width: 100%;
 }
 
 .dash-account .profile{
@@ -1855,7 +1861,10 @@ label a{
 }
 
 .image-gallery > img{
-  width: 100%;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  margin-bottom: 1.5rem;
 }
 
 .smaller-image{
@@ -1900,7 +1909,6 @@ label a{
 
 .details-area{
   background-color: #fdfdfd;
-  box-shadow: 1px 0 20px rgba(0, 0, 0, 0.08);
 }
 
 .details-area .center{
@@ -2551,6 +2559,10 @@ label a{
   .details-wrapper .categories .box .heading{
     font-size: 1.1rem;
     text-align: center;
+  }
+
+  .user-wrapper{
+    flex-direction:column;
   }
 }
 

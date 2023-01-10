@@ -2,6 +2,7 @@ import React,{useState} from "react";
 import { Link } from "react-router-dom";
 const Header = () => {
     const [nav, setNav] = useState(false);
+    const user = JSON.parse(localStorage.getItem('user'));
     const navigationToggle = () => {
         setNav(nav => !nav);
     }
@@ -13,6 +14,8 @@ const Header = () => {
                     <img src="/assets/icons8-menu-50.png" alt="menu" className="menu" onClick={navigationToggle}/>
                 </div>
 
+                
+
                 <div className="mobile-bottom">
                     <ul className="list">
                         <li><Link to='/'>Home</Link></li>
@@ -22,8 +25,25 @@ const Header = () => {
                         <li><Link to='/how'>Service</Link></li>
                         <li><Link to='/blog'>Blog</Link></li>
                         <li><Link to='/wishlist'>Wishlist</Link></li>
-                        <li><Link to='/login'>Login</Link></li>
-                        <li><Link to='/register'>Register</Link></li>
+                        {user ? (
+                            <>
+                                {user.isAdmin ? (
+                                    <>
+                                    <li><Link to='/admindashboard'>Account</Link></li>
+                                    </>
+                                ) : (
+                                    <>
+                                    <li><Link to='/account'>Account</Link></li>
+                                    </>
+                                )}
+                            </>
+                        ) : (
+                            <>
+                                <li><Link to='/login'>Login</Link></li>
+                                <li><Link to='/register'>Register</Link></li>
+                            </>
+                        )}
+                        
                     </ul>
                 </div>
             </nav>
@@ -39,8 +59,24 @@ const Header = () => {
                         <li><Link to='/how'>Service</Link></li>
                         <li><Link to='/blog'>Blog</Link></li>
                         <li><Link to='/wishlist'>Wishlist</Link></li>
-                        <li><Link to='/login'>Login</Link></li>
-                        <li><Link to='/register'>Register</Link></li>
+                        {user ? (
+                            <>
+                                {user.isAdmin ? (
+                                    <>
+                                    <li><Link to='/admindashboard'>Account</Link></li>
+                                    </>
+                                ) : (
+                                    <>
+                                    <li><Link to='/account'>Account</Link></li>
+                                    </>
+                                )}
+                            </>
+                        ) : (
+                            <>
+                                <li><Link to='/login'>Login</Link></li>
+                                <li><Link to='/register'>Register</Link></li>
+                            </>
+                        )}
                     </ul>
                     <ul className="social">
                         <li><Link><img src="../assets/icons8-facebook-30.png" alt="icon" /></Link></li>
